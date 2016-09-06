@@ -4,7 +4,7 @@ test:
 
 deployment:
   bump_and_tag_version:
-    branch: circle_test
+    branch: release
     commands:
       - git config user.email "git@matpataki.com"
       - git config user.name "Webhooks Version Bot"
@@ -13,7 +13,8 @@ deployment:
       - git commit -m 'version bump [skip ci]'
       - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin --tags
-      - git push origin circle_test
-      - git checkout origin/master
-      - git merge circle_test
+      - git push origin release
+      - git fetch origin master
+      - git checkout -t origin/master
+      - git merge release
       - git push origin master
