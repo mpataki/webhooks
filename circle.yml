@@ -6,7 +6,5 @@ deployment:
   tag_version:
     branch: circle_test
     commands:
-      - git config user.email "matpataki@gmail.com"
-      - git config user.name "mpataki"
-      - git tag -a $(cat VERSION)
+      - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin --tags
