@@ -6,8 +6,8 @@ deployment:
   bump_and_tag_version:
     branch: circle_test
     commands:
-      - git config user.email "mat@uken.com"
-      - git config user.name "mpataki"
+      - git config user.email "git@matpataki.com"
+      - git config user.name "Webhooks Version Bot"
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
       - git commit -m 'version bump'
