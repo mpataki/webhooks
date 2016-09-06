@@ -6,7 +6,7 @@ deployment:
   bump_and_tag_version:
     branch: release
     commands:
-      - git config user.email "git@matpataki.com"
+      - git config user.email ""
       - git config user.name "Webhooks Version Bot"
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
