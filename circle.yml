@@ -1,0 +1,11 @@
+deployment:
+  circle_test:
+    - ./deploy_scripts/bump.sh patch
+    - git add VERSION
+    - git commit -m 'bump patch version'
+    - git tag -a $(cat VERSION)
+    - git push origin --tags
+    - git push origin circle_test
+    - git checkout origin/master
+    - git merge circle_test
+    - git push origin master
