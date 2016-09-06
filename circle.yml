@@ -10,7 +10,7 @@ deployment:
       - git config user.name "Webhooks Version Bot"
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
-      - git commit -m 'version bump'
+      - git commit -m 'version bump [skip ci]'
       - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin --tags
       - git push origin circle_test
