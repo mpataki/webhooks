@@ -3,8 +3,15 @@ test:
     - echo 'no tests'
 
 deployment:
-  tag_version:
+  bump_and_tag_version:
     branch: circle_test
     commands:
+      - ./deploy_scripts/bump.sh patch
+      - git add VERSION
+      - git commit -m 'version bump'
       - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin --tags
+      - git push origin circle_test
+      - git checkout origin/master
+      - git merge circle_test
+      - git push origin master
