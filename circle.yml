@@ -14,8 +14,8 @@ deployment:
       - (git tag -d $(cat VERSION) && echo 'tag already present, overriding...') || echo ''
       - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin $(cat VERSION)
-      - git push origin release
+      - git push origin $CIRCLE_BRANCH
       - git fetch origin master
       - git checkout master || git checkout -t origin/master
-      - git merge release
+      - git merge $CIRCLE_BRANCH
       - git push origin master
