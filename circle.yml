@@ -16,6 +16,6 @@ deployment:
       - git push origin $(cat VERSION)
       - git push origin $CIRCLE_BRANCH
       - git fetch origin master
-      - git checkout master || git checkout -t origin/master
+      - (git checkout master && git pull) || git checkout -t origin/master
       - git merge $CIRCLE_BRANCH
       - git push origin master
