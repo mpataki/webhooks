@@ -13,6 +13,7 @@ deployment:
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
       - git commit -m 'version bump [skip ci]'
+      - g tag -d $(cat VERSION) || echo ''
       - git tag -a $(cat VERSION) -m 'version bump'
       - git push origin --tags
       - git push origin release
