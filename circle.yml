@@ -7,7 +7,7 @@ deployment:
     branch: release
     commands:
       - git config user.email "matpataki@gmail.com"
-      - git config user.name "Webhooks Version Bot"
+      - git config user.name "Version Bot"
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
       - git commit -m 'version bump [skip ci]'
@@ -17,5 +17,5 @@ deployment:
       - git push origin $CIRCLE_BRANCH
       - git fetch origin master
       - (git checkout master && git pull) || git checkout -t origin/master
-      - git merge $CIRCLE_BRANCH -m "merge $CIRCLE_BRANCH back into master"
+      - git merge $CIRCLE_BRANCH -m "merge $CIRCLE_BRANCH back into master [skip ci]"
       - git push origin master
