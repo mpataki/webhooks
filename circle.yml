@@ -17,5 +17,5 @@ deployment:
       - git push origin $CIRCLE_BRANCH
       - git fetch origin master
       - (git checkout master && git pull) || git checkout -t origin/master
-      - git merge $CIRCLE_BRANCH -m "merge $CIRCLE_BRANCH back into master"
+      - git merge $CIRCLE_BRANCH -m "merge $CIRCLE_BRANCH back into master [skip ci]"
       - git push origin master
