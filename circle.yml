@@ -6,7 +6,7 @@ deployment:
   bump_and_tag_version:
     branch: release
     commands:
-      - git config user.email "fake@email.com"
+      - git config user.email "matpataki@gmail.com"
       - git config user.name "Webhooks Version Bot"
       - ./deploy_scripts/bump.sh patch
       - git add VERSION
@@ -16,6 +16,6 @@ deployment:
       - git push origin $(cat VERSION)
       - git push origin $CIRCLE_BRANCH
       - git fetch origin master
-      - git checkout master || git checkout -t origin/master
-      - git merge $CIRCLE_BRANCH
+      - (git checkout master && git pull) || git checkout -t origin/master
+      - git merge $CIRCLE_BRANCH -m "merge $CIRCLE_BRANCH back into master"
       - git push origin master
